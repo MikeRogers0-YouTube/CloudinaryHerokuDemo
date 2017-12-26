@@ -18,7 +18,10 @@
 
   <div class="field">
     <%= form.label :avatar %>
-    <%= form.text_field :avatar, id: :user_avatar %>
+    <% if f.object.avatar.present? %>
+      <%= image_tag f.object.avatar.url(:default) %>
+    <% end %>
+    <%= f.cl_image_upload(:avatar) %>
   </div>
 
   <div class="actions">
