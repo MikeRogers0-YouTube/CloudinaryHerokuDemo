@@ -1,38 +1,40 @@
 $(document).on('turbolinks:load', function() {
-  // If the field isn't on the page or cloudinary_fileupload is not configured
-  // Just move on.
-  if( $("input.cloudinary-fileupload[type=file]").length < 1 || $.fn.cloudinary_fileupload === undefined) {
+  // If the field isn't on the page, cloudinary_fileupload is not configured or
+  // Rails UJS is missing, don't add the listeners. 
+  if( $('.cloudinary-fileupload').length === 0 
+    || $.fn.cloudinary_fileupload === undefined 
+    || Rails === undefined
+  ) {
     return;
   }
 
-  // Initialize the cloudinary fields.
-  $("input.cloudinary-fileupload[type=file]").cloudinary_fileupload({});
+  // Initialize the Cloudinary fields.
+  $('.cloudinary-fileupload').cloudinary_fileupload();
 
   // Add a listener that'll add a `data-upload-state` attribute when a user is uploading
   // a file, then clears it when the upload is completed.
-  $("input.cloudinary-fileupload[type=file]")
+  $('.cloudinary-fileupload')
     .on('fileuploadsend', function(e, data){
-      $(this).attr('data-upload-state', 'running');
+      $(this).attr('data-upload-state', 'uploading');
     })
     .on('cloudinaryalways', function(data){
-      $(this).attr('data-upload-state', '');
+      $(this).attr('data-upload-state', null);
 
-      // If the form is disabled but submitting, resubmit it.
-      if( $(this).parents('form').data('submitting') ){
+      // If the form is disabled but has been submitted, resubmit it.
+      if( $(this).parents('form').find(Rails.formEnableSelector).length >= 1 ){
         $(this).parents('form').submit();
       }
     });
 
-  $("input.cloudinary-fileupload[type=file]").parents('form').on('submit', function(e){
-    // If we're not uploading, let the form submit as normal.
-    if( $(this).find('[data-upload-state="running"]').length == 0 ){
-      return;
-    }
+  // Add a listener to the form that'll delay the submission until the upload is complete.
+  $(".cloudinary-fileupload").parents('form')
+    .on('submit', function(e){
+      // If we're not uploading, let the form submit as normal.
+      if( $(this).find('.cloudinary-fileupload[data-upload-state="uploading"]').length == 0 ){
+        return;
+      }
 
-    // Otherwise hold the form in the submitting state
-    $(this).data('submitting', true);
-
-    // Stop the form submitting.
-    e.preventDefault();
-  });
+      // Stop the form submitting (UJS will disable the submit button though!)
+      e.preventDefault();
+    });
 });
