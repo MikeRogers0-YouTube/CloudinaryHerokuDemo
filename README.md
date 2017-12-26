@@ -1,5 +1,7 @@
 # Cloudinary Heroku Demo
 
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
 TODO: Describe what the repo covers, ideally:
 
 1. Cloudinary Setup with some waiting JS

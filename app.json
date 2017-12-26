@@ -1,8 +1,8 @@
 {
   "name": "Cloudinary Heroku Demo",
   "description": "Example app of how to setup Cloudinary",
-  "scripts": {
-  },
+  "repository": "https://github.com/MikeRogers0/CloudinaryHerokuDemo",
+  "keywords": ["Ruby", "Rails", "Cloudinary"],
   "env": {
     "LANG": {
       "required": true
