@@ -1,24 +1,11 @@
-# README
+# Cloudinary Heroku Demo
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Setting Up
 
-Things you may want to cover:
+Copy the example files
 
-* Ruby version
+    cp config/database.yml.example config/database.yml && cp .env.example .env
 
-* System dependencies
+Getting the `CLOUDINARY_URL` environmental variable.
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+    TODO

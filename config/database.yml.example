@@ -1,0 +1,13 @@
+default: &default
+  adapter: postgresql
+  encoding: utf8
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+
+development:
+  <<: *default
+  database: cloudinary_heroku_demo_development
+
+test:
+  <<: *default
+  database: cloudinary_heroku_demo_test<%= ENV['TEST_ENV_NUMBER'] %>
