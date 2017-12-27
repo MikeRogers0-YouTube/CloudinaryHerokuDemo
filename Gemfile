@@ -29,9 +29,6 @@ gem 'turbolinks', '~> 5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-# jQuery - the cloudinary JS requires it
-gem 'jquery-rails'
-
 # Use carrierwave + cloudinary for uploads.
 gem 'carrierwave'
 gem 'cloudinary'
