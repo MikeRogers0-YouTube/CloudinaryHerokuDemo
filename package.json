@@ -1,5 +1,6 @@
 {
   "name": "CloudinaryHerokuDemo",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+  }
 }
