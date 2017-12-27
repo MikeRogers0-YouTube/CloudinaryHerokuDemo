@@ -1,8 +1,6 @@
 class ApplicationUploader < CarrierWave::Uploader::Base
   include Cloudinary::CarrierWave
 
-  process :update_remote_tags!
-
   # Tag our uploads so they're nicely organised remotely.
   def tags      
     [
@@ -23,5 +21,10 @@ class ApplicationUploader < CarrierWave::Uploader::Base
 
   def cloudinary_resource
     Cloudinary::Api.resource(my_public_id)
+  end
+
+  def store!(for_file=nil)
+    super
+    update_remote_tags!
   end
 end

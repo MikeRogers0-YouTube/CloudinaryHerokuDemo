@@ -16,13 +16,26 @@
     <%= form.text_field :name, id: :user_name %>
   </div>
 
+  <hr />
+
   <div class="field">
     <%= form.label :avatar %>
     <% if form.object.avatar.present? %>
-      <%= image_tag form.object.avatar.url(:default) %>
+      <div>
+        <%= image_tag form.object.avatar.url(:default) %>
+      </div>
+      <div>
+        <%= form.label :remove_avatar do %>
+          <%= form.check_box :remove_avatar, id: :user_remove_avatar  %>
+          Remove Avatar
+        <% end %>
+      </div>
     <% end %>
+    <%= form.hidden_field :avatar_cache  %>
     <%= form.cl_image_upload(:avatar, tags: form.object.avatar.direct_uploading_tags, html: { id: 'user_avatar' }) %>
   </div>
+
+  <hr />
 
   <div class="actions">
     <%= form.submit %>
