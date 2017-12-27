@@ -2,17 +2,14 @@
   "name": "Cloudinary Heroku Demo",
   "description": "Example app of how to setup Cloudinary",
   "repository": "https://github.com/MikeRogers0/CloudinaryHerokuDemo",
-  "keywords": ["Ruby", "Rails", "Cloudinary"],
-  "env": {
-  },
-  "formation": {
-  },
+  "keywords": ["Ruby", "Rails", "Cloudinary", "CarrierWave"],
+  "env": {},
   "addons": [
     "heroku-postgresql",
     "cloudinary"
   ],
   "buildpacks": [
-    "https://github.com/heroku/heroku-buildpack-nodejs",
-    "https://github.com/heroku/heroku-buildpack-ruby"
+    { "url": "heroku/nodejs" },
+    { "url": "heroku/ruby" }
   ]
 }
