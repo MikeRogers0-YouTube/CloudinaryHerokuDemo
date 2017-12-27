@@ -23,7 +23,7 @@ class ApplicationUploader < CarrierWave::Uploader::Base
     Cloudinary::Api.resource(my_public_id)
   end
 
-  def store!(for_file=nil)
+  def cache!(for_file=nil)
     super
     update_remote_tags!
   end
