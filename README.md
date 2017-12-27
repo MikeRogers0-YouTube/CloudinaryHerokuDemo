@@ -4,13 +4,7 @@
 
 This demos a snippet of JavaScript that'll delay a forms submission to the server until all files have finished uploading.
 
-I've also included a Carrierwave setup that worked for me (which also tags the uploads remotely), along with a fairly rudimentary test.
-
-TODO: Describe what the repo covers, ideally:
-
-1. Cloudinary Setup with some waiting JS
-2. Also Carrierwave (with the tag system I thought was neat?)
-3. Testing! How I tested uploads, and mocked them.
+I've also included a Carrierwave setup that worked for me (which also adds tags the remote uploads), along with a fairly rudimentary test.
 
 ## Setting Up
 
@@ -24,7 +18,11 @@ Create the app and add the Cloudinary addon
 
 ### Local Environment
 
-Copy the example files
+Installing JavaScript dependencies (Via Yarn)
+
+    brew install yarn && yarn
+
+Copy the example database and environment files
 
     cp config/database.yml.example config/database.yml && cp .env.example .env
 
@@ -32,10 +30,13 @@ Setup the database
 
     bundle exec rails db:setup
 
-Getting the `CLOUDINARY_URL` environmental variable.
-https://devcenter.heroku.com/articles/cloudinary#using-with-ruby-on-rails - Covered here nicely
+Getting the `CLOUDINARY_URL` environmental variable (I'm assuming you've run the Heroku setup at this point)
 
     heroku config -s | grep CLOUDINARY >> .env
+
+Turning on the server
+
+    bundle exec rails s
 
 ## Running Tests
 
