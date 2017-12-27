@@ -21,7 +21,7 @@
     <% if form.object.avatar.present? %>
       <%= image_tag form.object.avatar.url(:default) %>
     <% end %>
-    <%= form.cl_image_upload(:avatar, tags: form.object.avatar.tags, html: { id: 'user_avatar' }) %>
+    <%= form.cl_image_upload(:avatar, tags: form.object.avatar.direct_uploading_tags, html: { id: 'user_avatar' }) %>
   </div>
 
   <div class="actions">
