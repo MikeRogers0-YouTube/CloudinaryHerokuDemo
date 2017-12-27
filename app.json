@@ -11,5 +11,8 @@
     "heroku-postgresql",
     "cloudinary"
   ],
-  "buildpacks": []
+  "buildpacks": [
+    "heroku/nodejs",
+    "heroku/ruby"
+  ]
 }
