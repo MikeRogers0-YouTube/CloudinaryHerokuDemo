@@ -16,6 +16,10 @@ Create the app and add the Cloudinary addon
 
     heroku create && heroku addons:create cloudinary:starter
 
+Adding the buildpacks for Heroku (So it installs JavaScript dependencies, then bundles)
+
+    heroku buildpacks:set heroku/ruby && heroku buildpacks:add --index 1 heroku/nodejs
+
 ### Local Environment
 
 Installing JavaScript dependencies (Via Yarn)
