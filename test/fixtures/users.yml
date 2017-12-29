@@ -3,5 +3,9 @@
 without_avatar:
   name: MyString
 
+with_avatar:
+  name: MyString
+  avatar: MyString
+
 one:
   name: MyString

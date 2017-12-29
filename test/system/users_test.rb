@@ -27,34 +27,17 @@ class UsersTest < ApplicationSystemTestCase
     # Verify the DB saved correctly
     assert_equal(User.count, user_count + 1, 'User count has increased by 1')
     assert_equal(User.last.name, 'Mr User Name')
-    assert_equal(User.last.avatar.present?, true)
+    assert_equal(User.last.avatar.present?, true, 'User has an avatar')
 
     # Verify cloudinary processed the image.
     assert_equal(User.last.avatar.cloudinary_resource['tags'].join(','), User.last.avatar.tags, 'Remote tags have also updated')
   end
 
-  test "Creating a user without an Avatar" do
-    user_count = User.count
-
-    visit users_path
-    click_on "New User"
-
-    fill_in 'user_name', with: 'Mr User Name'
-    click_on 'Create User'
-
-    assert_selector('#notice', text: 'User was successfully created.')
-
-    # Verify the DB saved correctly
-    assert_equal(User.count, user_count + 1, 'User count has increased by 1')
-    assert_equal(User.last.name, 'Mr User Name')
-    assert_equal(User.last.avatar.present?, false)
-  end
-
-  test "Updating a user without an Avatar" do
-    user = users(:without_avatar)
+  test "Updating a user who already has an Avatar" do
+    user = users(:with_avatar)
 
     assert_not_equal(user.name, 'Mr User Name')
-    assert_equal(user.avatar.present?, false, 'Should not have an avatar')
+    assert_equal(user.avatar.present?, true, 'User has an avatar')
 
     visit edit_user_path(user)
 
@@ -66,6 +49,6 @@ class UsersTest < ApplicationSystemTestCase
     # Verify the DB saved correctly
     user.reload
     assert_equal(user.name, 'Mr User Name')
-    assert_equal(user.avatar.present?, false)
+    assert_equal(user.avatar.present?, true, 'User has an avatar')
   end
 end
