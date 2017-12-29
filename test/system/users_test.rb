@@ -1,11 +1,6 @@
 require "application_system_test_case"
 
 class UsersTest < ApplicationSystemTestCase
-  teardown do
-    # Delete the image we've just uploaded.
-    User.last.avatar.remove!
-  end
-
   # This test will hit the external API
   test "Creating a user with an Avatar" do
     user_count = User.count
@@ -31,6 +26,9 @@ class UsersTest < ApplicationSystemTestCase
 
     # Verify cloudinary processed the image.
     assert_equal(User.last.avatar.cloudinary_resource['tags'].join(','), User.last.avatar.tags, 'Remote tags have also updated')
+
+    # Delete the image we've just uploaded.
+    User.last.user.avatar.remove!
   end
 
   test "Updating a user who already has an Avatar" do
