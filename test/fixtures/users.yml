@@ -1,9 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
+without_avatar:
+  name: MyString
+
 one:
   name: MyString
-  avatar: MyString
-
-two:
-  name: MyString
-  avatar: MyString
