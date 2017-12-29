@@ -16,7 +16,7 @@ class ApplicationUploader < CarrierWave::Uploader::Base
   end
 
   # When we upload, update the tags (removing the db_unsaved tag)
-  def update_remote_tags!
+  def update_remote_tags!(new_file=nil)
     Cloudinary::Api.update(my_public_id, tags: tags)
   end
 
