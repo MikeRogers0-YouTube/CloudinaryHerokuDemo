@@ -15,6 +15,10 @@ class ApplicationUploader < CarrierWave::Uploader::Base
     [tags, 'db_unsaved'].join(',')
   end
 
+  def extension_white_list
+    %w(jpg jpeg gif png)
+  end
+
   # When we upload, update the tags (removing the db_unsaved tag)
   def update_remote_tags!(new_file=nil)
     Cloudinary::Api.update(my_public_id, tags: tags)

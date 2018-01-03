@@ -1,6 +1,8 @@
 require "application_system_test_case"
 
 class UsersTest < ApplicationSystemTestCase
+  # TODO: Add VCR to this
+
   # This test will hit the external API
   test "Creating a user with an Avatar" do
     user_count = User.count
@@ -28,7 +30,7 @@ class UsersTest < ApplicationSystemTestCase
     assert_equal(User.last.avatar.cloudinary_resource['tags'].join(','), User.last.avatar.tags, 'Remote tags have also updated')
 
     # Delete the image we've just uploaded.
-    User.last.user.avatar.remove!
+    User.last.avatar.remove!
   end
 
   test "Updating a user who already has an Avatar" do
