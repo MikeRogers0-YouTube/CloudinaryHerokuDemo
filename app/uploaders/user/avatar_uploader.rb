@@ -1,4 +1,6 @@
 class User::AvatarUploader < ApplicationUploader
+  process convert: 'jpg'
+
   # http://res.cloudinary.com/demo/image/upload/c_fill,f_auto,h_180,q_auto,w_180/sample.png
   version :default do    
     eager
