@@ -31,8 +31,9 @@
         <% end %>
       </div>
     <% end %>
-    <%= form.hidden_field :avatar_cache  %>
-    <%= form.cl_image_upload(:avatar, tags: form.object.avatar.direct_uploading_tags, allowed_formats: form.object.avatar.extension_white_list, html: { id: 'user_avatar' }) %>
+    <%= form.hidden_field :avatar_cache %>
+    <%#= form.cl_image_upload(:avatar, tags: form.object.avatar.direct_uploading_tags, allowed_formats: form.object.avatar.extension_white_list, html: { id: 'user_avatar' }) %>
+    <%= form.file_field :avatar %>
   </div>
 
   <hr />
